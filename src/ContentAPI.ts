@@ -13,7 +13,7 @@ import {
   DeploymentWithPointers,
   LegacyAuditInfo,
   RequestOptions
-} from 'dcl-catalyst-commons'
+} from 'tcl-catalyst-commons'
 import { Readable } from 'stream'
 import { DeploymentData } from './utils/DeploymentBuilder'
 import { DeploymentOptions } from './ContentClient'

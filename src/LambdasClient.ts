@@ -1,5 +1,5 @@
-import { EthAddress } from 'dcl-crypto'
-import { Profile, Fetcher, RequestOptions, EntityMetadata, ServerMetadata } from 'dcl-catalyst-commons'
+import { EthAddress } from 'tcl-crypto'
+import { Profile, Fetcher, RequestOptions, EntityMetadata, ServerMetadata } from 'tcl-catalyst-commons'
 import { convertFiltersToQueryParams, sanitizeUrl, splitAndFetch, splitAndFetchPaginated } from './utils/Helper'
 import {
   LambdasAPI,
@@ -21,7 +21,7 @@ export class LambdasClient implements LambdasAPI {
       fetcher ??
       new Fetcher({
         headers: {
-          'User-Agent': `lambdas-client/${RUNNING_VERSION} (+https://github.com/decentraland/catalyst-client)`
+          'User-Agent': `lambdas-client/${RUNNING_VERSION} (+https://github.com/telestoworld/catalyst-client)`
         }
       })
   }

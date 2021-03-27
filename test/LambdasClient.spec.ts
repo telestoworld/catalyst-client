@@ -1,7 +1,7 @@
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 import { mock, instance, when, anything } from 'ts-mockito'
-import { Fetcher } from 'dcl-catalyst-commons'
+import { Fetcher } from 'tcl-catalyst-commons'
 import { LambdasClient, ProfileFields } from 'index'
 
 chai.use(chaiAsPromised)
@@ -15,7 +15,7 @@ describe('LambdasClient', () => {
     const [ethAddress1, ethAddress2] = ['ethAddress1', 'ethAddress2']
     const { instance: fetcher } = mockFetcherJson(`/profiles?id=${ethAddress1}&id=${ethAddress2}`, requestResult)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchProfiles([ethAddress1, ethAddress2])
 
     expect(result).to.deep.equal(requestResult)
@@ -26,7 +26,7 @@ describe('LambdasClient', () => {
     const [ethAddress1, ethAddress2] = ['ethAddress1', 'ethAddress2']
     const { instance: fetcher } = mockFetcherJson(`/profiles?fields=snapshots&id=${ethAddress1}&id=${ethAddress2}`, requestResult)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchProfiles([ethAddress1, ethAddress2], { fields: ProfileFields.ONLY_SNAPSHOTS })
 
     expect(result).to.deep.equal(requestResult)
@@ -43,7 +43,7 @@ describe('LambdasClient', () => {
       requestResult
     )
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchWearables({ wearableIds: ['id1', 'id2'], textSearch: 'text' })
 
     expect(result).to.deep.equal(wearables)
@@ -57,7 +57,7 @@ describe('LambdasClient', () => {
       requestResult
     )
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchOwnedWearables(ethAddress, false)
 
     expect(result).to.deep.equal(requestResult)
@@ -71,7 +71,7 @@ describe('LambdasClient', () => {
       requestResult
     )
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchOwnedWearables(ethAddress, true)
 
     expect(result).to.deep.equal(requestResult)
@@ -98,7 +98,7 @@ describe('LambdasClient', () => {
     return { mock: mockedFetcher, instance: instance(mockedFetcher) }
   }
 
-  function buildClient(URL: string, fetcher: Fetcher) {
+  function builtclient(URL: string, fetcher: Fetcher) {
     return new LambdasClient(URL, fetcher)
   }
 })

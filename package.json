@@ -1,7 +1,7 @@
 {
-  "name": "dcl-catalyst-client",
+  "name": "tcl-catalyst-client",
   "version": "0.0.0-development",
-  "description": "A client to query and perform changes on Decentraland's catalyst servers",
+  "description": "A client to query and perform changes on telestoworld's catalyst servers",
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
@@ -31,22 +31,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/decentraland/catalyst-client.git"
+    "url": "git+https://github.com/telestoworld/catalyst-client.git"
   },
   "keywords": [
-    "decentraland"
+    "telestoworld"
   ],
-  "author": "Decentraland",
+  "author": "telestoworld",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/decentraland/catalyst-client/issues"
+    "url": "https://github.com/telestoworld/catalyst-client/issues"
   },
-  "homepage": "https://github.com/decentraland/catalyst-client#readme",
+  "homepage": "https://github.com/telestoworld/catalyst-client#readme",
   "dependencies": {
     "async-iterator-to-array": "0.0.1",
-    "dcl-catalyst-commons": "^3.0.1",
-    "dcl-crypto": "^2.2.0",
-    "isomorphic-form-data": "git+https://github.com/decentraland/isomorphic-form-data.git#3409301b9e0348dc30da63955fa9fdb3ac46ac3e"
+    "tcl-catalyst-commons": "https://github.com/telestoworld/catalyst-commons.git",
+    "tcl-crypto": "https://github.com/telestoworld/telestoworld-crypto.git",
+    "isomorphic-form-data": "git+https://github.com/telestoworld/isomorphic-form-data.git#3409301b9e0348dc30da63955fa9fdb3ac46ac3e"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",

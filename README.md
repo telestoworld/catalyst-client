@@ -1,30 +1,30 @@
-# Decentraland Catalyst Client
+# telestoworld Catalyst Client
 
-Welcome to the Catalyst Client library. This client can be used to interact with Decentraland's [Catalyst servers](https://github.com/decentraland/catalyst). You can both fetch data, or deploy new entities to the server you specify.
+Welcome to the Catalyst Client library. This client can be used to interact with telestoworld's [Catalyst servers](https://github.com/telestoworld/catalyst). You can both fetch data, or deploy new entities to the server you specify.
 
 ## Installation
 
 ```bash
-npm install dcl-catalyst-client
+npm install tcl-catalyst-client
 ```
 
 ## Usage
 
 You can check the entire API [here](src/CatalystAPI.ts).
 
-This library depends on two other Decentraland libraries:
+This library depends on two other telestoworld libraries:
 
-- [Decentraland Crypto](https://github.com/decentraland/decentraland-crypto/)
-- [Catalyst Commons](https://github.com/decentraland/catalyst-commons/)
+- [telestoworld Crypto](https://github.com/telestoworld/telestoworld-crypto/)
+- [Catalyst Commons](https://github.com/telestoworld/catalyst-commons/)
 
 ### Deploying
 
 One of the most important aspects, is the ability to deploy new entities. Here is an example of how to do it:
 
 ```
-import { CatalystClient, DeploymentBuilder } from 'dcl-catalyst-client'
-import { EntityType } from 'dcl-catalyst-commons'
-import { Authenticator } from 'dcl-crypto'
+import { CatalystClient, DeploymentBuilder } from 'tcl-catalyst-client'
+import { EntityType } from 'tcl-catalyst-commons'
+import { Authenticator } from 'tcl-crypto'
 
 // Build entity and group all files
 const { entityId, files } = await DeploymentBuilder.buildEntity(EntityType.*, pointers, contentFiles, metadata)
@@ -58,7 +58,7 @@ npm run build
 npm run test
 ```
 
-### [Releases](https://registry.npmjs.org/dcl-catalyst-client)
+### [Releases](https://registry.npmjs.org/tcl-catalyst-client)
 
 #### Stable Releases
 

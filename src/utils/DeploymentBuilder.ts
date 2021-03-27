@@ -1,4 +1,4 @@
-import { AuthChain } from 'dcl-crypto'
+import { AuthChain } from 'tcl-crypto'
 import {
   Hashing,
   Timestamp,
@@ -11,7 +11,7 @@ import {
   ContentFileHash,
   EntityId,
   Fetcher
-} from 'dcl-catalyst-commons'
+} from 'tcl-catalyst-commons'
 
 export class DeploymentBuilder {
   /**

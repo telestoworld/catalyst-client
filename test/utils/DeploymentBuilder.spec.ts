@@ -1,7 +1,7 @@
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 import { DeploymentBuilder } from 'utils/DeploymentBuilder'
-import { EntityType, Hashing, ENTITY_FILE_NAME } from 'dcl-catalyst-commons'
+import { EntityType, Hashing, ENTITY_FILE_NAME } from 'tcl-catalyst-commons'
 
 chai.use(chaiAsPromised)
 const expect = chai.expect

@@ -1,5 +1,5 @@
 import chai from 'chai'
-import { Fetcher } from 'dcl-catalyst-commons'
+import { Fetcher } from 'tcl-catalyst-commons'
 import { mock, when, anything, instance, verify } from 'ts-mockito'
 import {
   sanitizeUrl,

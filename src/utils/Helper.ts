@@ -1,4 +1,4 @@
-import { Fetcher, RequestOptions } from 'dcl-catalyst-commons'
+import { Fetcher, RequestOptions } from 'tcl-catalyst-commons'
 
 require('isomorphic-form-data')
 

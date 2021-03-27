@@ -1,4 +1,4 @@
-import { getMainnetCatalysts, getRopstenCatalysts } from 'dcl-catalyst-commons'
+import { getMainnetCatalysts, getRopstenCatalysts } from 'tcl-catalyst-commons'
 import { CatalystClient } from '../CatalystClient'
 import CatalystsList from '../CatalystsList'
 

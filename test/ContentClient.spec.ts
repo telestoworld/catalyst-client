@@ -13,7 +13,7 @@ import {
   EntityVersion,
   SortingField,
   SortingOrder
-} from 'dcl-catalyst-commons'
+} from 'tcl-catalyst-commons'
 import { DeploymentWithMetadataContentAndPointers } from 'ContentAPI'
 import { Headers } from 'node-fetch'
 
@@ -26,7 +26,7 @@ describe('ContentClient', () => {
   it('When fetching by pointers, if none is set, then an error is thrown', () => {
     const { mock: mocked, instance: fetcher } = mockFetcherJson()
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = client.fetchEntitiesByPointers(EntityType.PROFILE, [])
 
     expect(result).to.be.rejectedWith(`You must set at least one pointer.`)
@@ -38,7 +38,7 @@ describe('ContentClient', () => {
     const pointer = 'P'
     const { instance: fetcher } = mockFetcherJson(`/entities/profile?pointer=${pointer}`, requestResult)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchEntitiesByPointers(EntityType.PROFILE, [pointer])
 
     expect(result).to.deep.equal(requestResult)
@@ -47,7 +47,7 @@ describe('ContentClient', () => {
   it('When fetching by ids, if none is set, then an error is thrown', () => {
     const { mock: mocked, instance: fetcher } = mockFetcherJson()
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = client.fetchEntitiesByIds(EntityType.PROFILE, [])
 
     expect(result).to.be.rejectedWith(`You must set at least one id.`)
@@ -59,7 +59,7 @@ describe('ContentClient', () => {
     const id = 'Id'
     const { instance: fetcher } = mockFetcherJson(`/entities/profile?id=${id}`, requestResult)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchEntitiesByIds(EntityType.PROFILE, [id])
 
     expect(result).to.deep.equal(requestResult)
@@ -69,7 +69,7 @@ describe('ContentClient', () => {
     const id = 'Id'
     const { instance: fetcher } = mockFetcherJson(`/entities/profile?id=${id}`, [])
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = client.fetchEntityById(EntityType.PROFILE, id)
 
     expect(result).to.be.rejectedWith(`Failed to find an entity with type '${EntityType.PROFILE}' and id '${id}'.`)
@@ -81,7 +81,7 @@ describe('ContentClient', () => {
     const id = 'Id'
     const { instance: fetcher } = mockFetcherJson(`/entities/profile?id=${id}`, requestResult)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchEntityById(EntityType.PROFILE, id)
 
     expect(result).to.equal(entity)
@@ -100,7 +100,7 @@ describe('ContentClient', () => {
     )
     const fetcher = instance(mockedFetcher)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.downloadContent(fileHash, { waitTime: '20' })
 
     // Assert that the correct buffer is returned, and that there was a retry attempt
@@ -117,7 +117,7 @@ describe('ContentClient', () => {
     when(mockedFetcher.fetchBuffer(`${URL}/contents/${fileHash}`, anything())).thenReturn(Promise.resolve(failBuffer))
     const fetcher = instance(mockedFetcher)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = client.downloadContent(fileHash, { attempts: 2, waitTime: '20' })
 
     // Assert that the request failed, and that the client tried many times as expected
@@ -133,7 +133,7 @@ describe('ContentClient', () => {
     ]
     const { instance: fetcher } = mockFetcherJson(`/available-content?cid=${hash1}&cid=${hash2}`, requestResult)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.isContentAvailable([hash1, hash2])
 
     expect(result).to.deep.equal(requestResult)
@@ -142,7 +142,7 @@ describe('ContentClient', () => {
   it('When checking if content is available, if none is set, then an error is thrown', () => {
     const { mock: mocked, instance: fetcher } = mockFetcherJson()
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = client.isContentAvailable([])
 
     expect(result).to.be.rejectedWith(`You must set at least one cid.`)
@@ -170,7 +170,7 @@ describe('ContentClient', () => {
       requestResult
     )
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchAllDeployments({ filters: filters })
 
     expect(result).to.deep.equal([deployment])
@@ -189,7 +189,7 @@ describe('ContentClient', () => {
       requestResult
     )
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchAllDeployments({
       filters: { entityTypes: [EntityType.PROFILE] },
       fields: DeploymentFields.POINTERS_CONTENT_AND_METADATA
@@ -199,7 +199,7 @@ describe('ContentClient', () => {
   })
 
   it('When fetching all deployments with no filters, then an error is thrown', async () => {
-    const client = buildClient(URL)
+    const client = builtclient(URL)
 
     const promise = client.fetchAllDeployments({
       filters: {
@@ -228,7 +228,7 @@ describe('ContentClient', () => {
       requestResult
     )
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchAllDeployments({
       filters: { entityTypes: [EntityType.PROFILE] },
       sortBy: { field: SortingField.ENTITY_TIMESTAMP, order: SortingOrder.ASCENDING }
@@ -259,7 +259,7 @@ describe('ContentClient', () => {
     ).thenReturn(Promise.resolve(requestResult2))
     const fetcher = instance(mockedFetcher)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchAllDeployments({ filters: { entityTypes: [EntityType.PROFILE] } })
 
     // We make sure that repeated deployments were ignored
@@ -292,7 +292,7 @@ describe('ContentClient', () => {
     ).thenReturn(Promise.resolve(requestResult2))
     const fetcher = instance(mockedFetcher)
 
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
     const result = await client.fetchAllDeployments({
       filters: { entityTypes: [EntityType.PROFILE] },
       fields: DeploymentFields.AUDIT_INFO
@@ -305,7 +305,7 @@ describe('ContentClient', () => {
     const contentHash = 'abc123'
     const mockedResponse = instance(mock<ReadableStream>())
     const { instance: fetcher } = mockPipeFetcher(new Headers())
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
 
     const result = await client.pipeContent(contentHash, mockedResponse)
 
@@ -318,7 +318,7 @@ describe('ContentClient', () => {
     const headers: Headers = new Headers()
     headers.set('invalid', 'val')
     const { instance: fetcher } = mockPipeFetcher(headers)
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
 
     const result = await client.pipeContent(contentHash, mockedResponse)
 
@@ -332,7 +332,7 @@ describe('ContentClient', () => {
     headers.set('invalid', 'val')
     headers.set('content-length', '200')
     const { instance: fetcher } = mockPipeFetcher(headers)
-    const client = buildClient(URL, fetcher)
+    const client = builtclient(URL, fetcher)
 
     const result = await client.pipeContent(contentHash, mockedResponse)
 
@@ -388,7 +388,7 @@ describe('ContentClient', () => {
     return { mock: mockedFetcher, instance: instance(mockedFetcher) }
   }
 
-  function buildClient(URL: string, fetcher?: Fetcher) {
+  function builtclient(URL: string, fetcher?: Fetcher) {
     return new ContentClient(URL, 'origin', fetcher)
   }
 })

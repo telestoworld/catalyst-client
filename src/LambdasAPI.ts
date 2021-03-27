@@ -1,5 +1,5 @@
-import { EthAddress } from 'dcl-crypto'
-import { EntityMetadata, Profile, RequestOptions, ServerMetadata } from 'dcl-catalyst-commons'
+import { EthAddress } from 'tcl-crypto'
+import { EntityMetadata, Profile, RequestOptions, ServerMetadata } from 'tcl-catalyst-commons'
 
 export interface LambdasAPI {
   fetchProfiles(ethAddresses: EthAddress[], profileOptions?: ProfileOptions, options?: RequestOptions): Promise<Profile[]>

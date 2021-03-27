@@ -23,7 +23,7 @@ import {
   mergeRequestOptions,
   SortingField,
   SortingOrder
-} from 'dcl-catalyst-commons'
+} from 'tcl-catalyst-commons'
 import asyncToArray from 'async-iterator-to-array'
 import { Readable } from 'stream'
 import { ContentAPI, DeploymentWithMetadataContentAndPointers } from './ContentAPI'
@@ -53,7 +53,7 @@ export class ContentClient implements ContentAPI {
       fetcher ??
       new Fetcher({
         headers: {
-          'User-Agent': `content-client/${RUNNING_VERSION} (+https://github.com/decentraland/catalyst-client)`
+          'User-Agent': `content-client/${RUNNING_VERSION} (+https://github.com/telestoworld/catalyst-client)`
         }
       })
   }
@@ -423,7 +423,7 @@ export class DeploymentFields<T extends Partial<Deployment>> {
     'metadata'
   ])
 
-  private constructor(private readonly fields: string[]) {}
+  private constructor(private readonly fields: string[]) { }
 
   getFields(): string {
     return this.fields.join(',')

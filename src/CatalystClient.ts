@@ -1,4 +1,4 @@
-import { EthAddress } from 'dcl-crypto'
+import { EthAddress } from 'tcl-crypto'
 import {
   Timestamp,
   Pointer,
@@ -14,7 +14,7 @@ import {
   LegacyAuditInfo,
   RequestOptions,
   ServerMetadata
-} from 'dcl-catalyst-commons'
+} from 'tcl-catalyst-commons'
 import { Readable } from 'stream'
 import { CatalystAPI } from './CatalystAPI'
 import { DeploymentData } from './utils/DeploymentBuilder'
@@ -41,7 +41,7 @@ export class CatalystClient implements CatalystAPI {
       fetcher ??
       new Fetcher({
         headers: {
-          'User-Agent': `catalyst-client/${RUNNING_VERSION} (+https://github.com/decentraland/catalyst-client)`
+          'User-Agent': `catalyst-client/${RUNNING_VERSION} (+https://github.com/telestoworld/catalyst-client)`
         }
       })
     this.contentClient = new ContentClient(this.catalystUrl + '/content', origin, fetcher)
